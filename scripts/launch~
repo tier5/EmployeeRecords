@@ -1,0 +1,9 @@
+
+
+sudo systemctl restart apache2
+ curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
+ 
+composer create-project --prefer-dist laravel/laravel /var/www/html 
+
+sudo chmod -R 777 /var/www/html/blog/storage
+sudo chmod -R 777 /var/www/html/blog/bootstrap
