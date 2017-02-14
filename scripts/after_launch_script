@@ -8,7 +8,6 @@ sudo apt-get -y install  phpmyadmin
 cd /var/www/html
 php artisan migrate
 php artisan db:seed
-php artisan key:generate
 sudo chmod -R 777 /var/www/html/storage
 sudo chmod -R 777 /var/www/html/bootstrap
 sudo rm /etc/apache2/sites-available/000-default.conf
@@ -88,3 +87,6 @@ PUSHER_APP_KEY=
 PUSHER_APP_SECRET=
 
 EOF
+
+php artisan key:generate
+
