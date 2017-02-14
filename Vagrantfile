@@ -12,7 +12,18 @@ Vagrant.configure("2") do |config|
 
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://atlas.hashicorp.com/search.
-  config.vm.box = "ubuntu.16.04"
+  #config.vm.box = "base"
+   config.vm.define "project-name" do |config|
+      config.vm.provider :digital_ocean do |provider, override|
+        override.ssh.private_key_path = 'C:/cygwin64/home/CEO/.ssh/id_rsa'
+        override.vm.box = 'digital_ocean'
+        override.vm.box_url = "https://github.com/devopsgroup-io/vagrant-digitalocean/raw/master/box/digital_ocean.box"
+        provider.token = 'b684d860265ba73dcb898507e9ce01a87431db79319aa3e84aa78818e9c79591'
+        provider.image = 'ubuntu-16-10-x64'
+        provider.region = 'nyc1'
+        provider.size = '1gb'
+      end
+  end
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
@@ -22,7 +33,7 @@ Vagrant.configure("2") do |config|
   # Create a forwarded port mapping which allows access to a specific port
   # within the machine from a port on the host machine. In the example below,
   # accessing "localhost:8080" will access port 80 on the guest machine.
-    config.vm.network "forwarded_port", guest: 80, host: 1232
+  # config.vm.network "forwarded_port", guest: 80, host: 8080
 
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
@@ -37,7 +48,7 @@ Vagrant.configure("2") do |config|
   # the path on the host to the actual folder. The second argument is
   # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options.
-    config.vm.synced_folder ".", "/var/www/html"
+   config.vm.synced_folder ".","/var/www/html"
 
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
