@@ -13,3 +13,6 @@ An admin can edit details of employees and delete employees.
 - Then Do --> cd /var/www/html/scripts
 - Then Do --> sudo ./after_launch_script ( Make sure local mysql password should be toor )
 - Then Local Environment Can be Seen at --> http://localhost:27015 
+  incase it doesnot work for you just run these two commands from yout local project directory
+  sudo chmod -R 777 storage/
+  sudo chmod -R 777 bootstrap/
